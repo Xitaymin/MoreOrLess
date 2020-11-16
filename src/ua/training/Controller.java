@@ -5,7 +5,6 @@ import java.util.Scanner;
 public class Controller {
     private Model model;
     private View view;
-    
 
     public Controller(Model model, View view) {
         this.model = model;
@@ -20,14 +19,24 @@ public class Controller {
         while (shouldInputContinue) {
             userInput = scanner.nextInt();
             if(checkIfUserInputValid(userInput)){
-                model.compareUserInputWithGuessedNumber(userInput);
+                int compairingResult = model.compareUserInputWithGuessedNumber(userInput);
+                if(compairingResult == Model.EQUAL) {
+                    view.showMessage(View.CONGRATULATION + userInput);
+                    shouldInputContinue = false;
+                }
+                else if(compairingResult == Model.LESS) {
+                    view.showMessageWithRange(View.LESS_NUMBER,model.getMinLimit(),model.getMaxLimit());
+                }
+                else {
+                    view.showMessageWithRange(View.GREATER_NUMBER,model.getMinLimit(),model.getMaxLimit());
+                }
             }
-
+            else {view.showMessageWithRange(View.INVALID_INPUT, model.getMinLimit(), model.getMaxLimit());}
         }
     }
 
     boolean checkIfUserInputValid (int userInput) {
-        return (userInput>=Model.MIN_RANGE)&&(userInput<=Model.MAX_RANGE);
+        return (userInput<model.getMaxLimit())&&(userInput>model.getMinLimit());
     }
 
 
