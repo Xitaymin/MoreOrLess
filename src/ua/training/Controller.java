@@ -3,8 +3,8 @@ package ua.training;
 import java.util.Scanner;
 
 public class Controller {
-    private ModelWithStatistic model;
-    private View view;
+     ModelWithStatistic model;
+     View view;
 
     public Controller(ModelWithStatistic model, View view) {
         this.model = model;
