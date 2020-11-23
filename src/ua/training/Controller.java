@@ -3,10 +3,10 @@ package ua.training;
 import java.util.Scanner;
 
 public class Controller {
-    private Model model;
+    private ModelWithStatistic model;
     private View view;
 
-    public Controller(Model model, View view) {
+    public Controller(ModelWithStatistic model, View view) {
         this.model = model;
         this.view = view;
     }
@@ -22,16 +22,20 @@ public class Controller {
                 int compairingResult = model.compareUserInputWithGuessedNumber(userInput);
                 if(compairingResult == Model.EQUAL) {
                     view.showMessage(View.CONGRATULATION + userInput);
+                    view.showStepCounter(model.getStepCounter());
                     shouldInputContinue = false;
                 }
                 else if(compairingResult == Model.LESS) {
                     view.showMessageWithRange(View.LESS_NUMBER,model.getMinLimit(),model.getMaxLimit());
+                    view.showHistoryOfAttempts(model.getHistory());
                 }
                 else {
                     view.showMessageWithRange(View.GREATER_NUMBER,model.getMinLimit(),model.getMaxLimit());
+                    view.showHistoryOfAttempts(model.getHistory());
                 }
             }
-            else {view.showMessageWithRange(View.INVALID_INPUT, model.getMinLimit(), model.getMaxLimit());}
+            else {view.showMessageWithRange(View.INVALID_INPUT, model.getMinLimit(), model.getMaxLimit());
+                  view.showHistoryOfAttempts(model.getHistory());}
         }
     }
 

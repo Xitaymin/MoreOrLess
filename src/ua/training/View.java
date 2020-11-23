@@ -1,5 +1,7 @@
 package ua.training;
 
+import java.util.List;
+
 public class View {
     public static final String GREETING = "Try to guess a number from 1 to 99 inclusively. Print your number.";
     public static final String INVALID_INPUT = "Your number is not in range. Print your number in range:";
@@ -13,5 +15,17 @@ public class View {
 
     void showMessageWithRange(String message, int minLimit, int maxLimit) {
         System.out.println(message + " (" + minLimit + ", " + maxLimit + ")");
+    }
+
+    void showHistoryOfAttempts(List<Integer> steps) {
+        System.out.print("Before you entered: ");
+        for (Integer step:steps) {
+            System.out.print(step + " ");
+        }
+        System.out.println();
+    }
+
+    void showStepCounter(int counter){
+        System.out.println("You made " + counter + " attempts.");
     }
 }

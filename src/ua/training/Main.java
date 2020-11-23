@@ -3,7 +3,7 @@ package ua.training;
 public class Main {
 
     public static void main(String[] args) {
-        Model model = new Model();
+        ModelWithStatistic model = new ModelWithStatistic();
         View view = new View();
         Controller controller = new Controller(model,view);
 
