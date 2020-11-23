@@ -8,7 +8,7 @@ public class View {
     public static final String CONGRATULATION = "You win, the guessed number is ";
     public static final String LESS_NUMBER = "Your number is less than guessed number. Guessed number is in range:";
     public static final String GREATER_NUMBER = "Your number is greater than guessed number. Guessed number is in range:";
-
+    public static final String WRONG_INPUT_TYPE = "You printed another symbol. Please, enter a number.";
      void showMessage(String message) {
         System.out.println(message);
     }
