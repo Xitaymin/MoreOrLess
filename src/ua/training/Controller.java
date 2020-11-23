@@ -17,31 +17,28 @@ public class Controller {
         int userInput;
         view.showMessage(View.GREETING);
         while (shouldInputContinue) {
-            userInput = scanner.nextInt();
-            if(checkIfUserInputValid(userInput)){
-                int compairingResult = model.compareUserInputWithGuessedNumber(userInput);
-                if(compairingResult == Model.EQUAL) {
-                    view.showMessage(View.CONGRATULATION + userInput);
-                    view.showStepCounter(model.getStepCounter());
-                    shouldInputContinue = false;
-                }
-                else if(compairingResult == Model.LESS) {
-                    view.showMessageWithRange(View.LESS_NUMBER,model.getMinLimit(),model.getMaxLimit());
-                    view.showHistoryOfAttempts(model.getHistory());
-                }
-                else {
-                    view.showMessageWithRange(View.GREATER_NUMBER,model.getMinLimit(),model.getMaxLimit());
+                userInput = scanner.nextInt();
+                if (checkIfUserInputValid(userInput)) {
+                    int compairingResult = model.compareUserInputWithGuessedNumber(userInput);
+                    if (compairingResult == Model.EQUAL) {
+                        view.showMessage(View.CONGRATULATION + userInput);
+                        view.showStepCounter(model.getStepCounter());
+                        shouldInputContinue = false;
+                    } else if (compairingResult == Model.LESS) {
+                        view.showMessageWithRange(View.LESS_NUMBER, model.getMinLimit(), model.getMaxLimit());
+                        view.showHistoryOfAttempts(model.getHistory());
+                    } else {
+                        view.showMessageWithRange(View.GREATER_NUMBER, model.getMinLimit(), model.getMaxLimit());
+                        view.showHistoryOfAttempts(model.getHistory());
+                    }
+                } else {
+                    view.showMessageWithRange(View.INVALID_INPUT, model.getMinLimit(), model.getMaxLimit());
                     view.showHistoryOfAttempts(model.getHistory());
                 }
             }
-            else {view.showMessageWithRange(View.INVALID_INPUT, model.getMinLimit(), model.getMaxLimit());
-                  view.showHistoryOfAttempts(model.getHistory());}
-        }
     }
 
     boolean checkIfUserInputValid (int userInput) {
         return (userInput<model.getMaxLimit())&&(userInput>model.getMinLimit());
     }
-
-
 }
