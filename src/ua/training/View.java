@@ -18,11 +18,13 @@ public class View {
     }
 
     void showHistoryOfAttempts(List<Integer> steps) {
+         StringBuilder sb = new StringBuilder();
         System.out.print("Before you entered: ");
         for (Integer step:steps) {
-            System.out.print(step + " ");
+            sb.append(step);
+            sb.append(" ");
         }
-        System.out.println();
+        System.out.println(sb.toString());
     }
 
     void showStepCounter(int counter){
