@@ -1,6 +1,6 @@
 package ua.training;
 
-public class Model implements IModel {
+public class Model {
     public static final int LESS = -1;
     public static final int MORE = 1;
     public static final int EQUAL = 0;
