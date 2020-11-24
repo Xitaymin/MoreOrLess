@@ -17,6 +17,10 @@ public class Controller {
         int userInput;
         view.showMessage(View.GREETING);
         while (shouldInputContinue) {
+            while (!scanner.hasNextInt()){
+                view.showMessage(View.WRONG_INPUT_TYPE);
+                scanner.next();
+            }
                 userInput = scanner.nextInt();
                 if (checkIfUserInputValid(userInput)) {
                     int compairingResult = model.compareUserInputWithGuessedNumber(userInput);
