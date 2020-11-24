@@ -27,6 +27,7 @@ public class Controller {
                     if (compairingResult == Model.EQUAL) {
                         view.showMessage(View.CONGRATULATION + userInput);
                         view.showStepCounter(model.getStepCounter());
+                        scanner.close();
                         shouldInputContinue = false;
                     } else if (compairingResult == Model.LESS) {
                         view.showMessageWithRange(View.LESS_NUMBER, model.getMinLimit(), model.getMaxLimit());
@@ -42,6 +43,7 @@ public class Controller {
             }
     }
 
+    // todo let user to change range
     boolean checkIfUserInputValid (int userInput) {
         return (userInput<model.getMaxLimit())&&(userInput>model.getMinLimit());
     }
