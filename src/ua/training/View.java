@@ -9,6 +9,13 @@ public class View {
     public static final String LESS_NUMBER = "Your number is less than guessed number. Guessed number is in range:";
     public static final String GREATER_NUMBER = "Your number is greater than guessed number. Guessed number is in range:";
     public static final String WRONG_INPUT_TYPE = "You printed another symbol. Please, enter a number.";
+    public static final String INPUT_LOW_LIMIT = "Please, enter low limit of game range.";
+    public static final String INPUT_HIGH_LIMIT = "Please, enter high limit of game range.";
+    public static final String INVITING = "Try to guess a secret number. Print your number in range: ";
+    public static final String LEFT_BRACKET = "[";
+    public static final String RIGHT_BRACKET = "]";
+    public static final String DIVIDER = " ";
+    public static final String COMMA = ",";
      void showMessage(String message) {
         System.out.println(message);
     }
@@ -25,6 +32,14 @@ public class View {
             sb.append(" ");
         }
         System.out.println(sb.toString());
+    }
+
+    void concatStrings(String ... strings) {
+        StringBuilder sb = new StringBuilder();
+        for (String s:strings) {
+            sb.append(s);
+        }
+        System.out.println(sb);
     }
 
     void showStepCounter(int counter){

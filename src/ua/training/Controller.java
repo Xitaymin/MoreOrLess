@@ -16,6 +16,12 @@ public class Controller {
         boolean shouldInputContinue = true;
         int userInput;
         view.showMessage(View.GREETING);
+        launchGame(scanner);
+     }
+
+     void launchGame(Scanner scanner) {
+        int userInput;
+        boolean shouldInputContinue = true;
         while (shouldInputContinue) {
             checkIfIntValue(scanner);
             userInput = scanner.nextInt();
@@ -23,7 +29,7 @@ public class Controller {
         }
     }
 
-    private void checkIfIntValue(Scanner scanner) {
+    void checkIfIntValue(Scanner scanner) {
         while (!scanner.hasNextInt()){
             view.showMessage(View.WRONG_INPUT_TYPE);
             scanner.next();
