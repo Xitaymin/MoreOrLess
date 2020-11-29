@@ -9,7 +9,6 @@ public class Model {
     private int guessedNumber;
 
     public Model() {
-        this.guessedNumber = setRandomNumber();
     }
 
     public int getMinLimit() {
@@ -28,8 +27,12 @@ public class Model {
         this.maxLimit = maxLimit;
     }
 
-    private int setRandomNumber() {
-        return  (int)(Math.random()*(maxLimit - minLimit) + minLimit);
+    public void setGuessedNumber() {
+        guessedNumber = (int)(Math.random()*(maxLimit - minLimit) + minLimit);
+    }
+
+    public int getGuessedNumber() {
+        return guessedNumber;
     }
 
     int compareUserInputWithGuessedNumber(int userInput) {

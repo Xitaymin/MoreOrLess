@@ -15,6 +15,7 @@ public class Controller {
         Scanner scanner = new Scanner(System.in);
         boolean shouldInputContinue = true;
         int userInput;
+        model.setGuessedNumber();
         view.showMessage(View.GREETING);
         launchGame(scanner);
      }

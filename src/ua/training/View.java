@@ -12,6 +12,7 @@ public class View {
     public static final String INPUT_LOW_LIMIT = "Please, enter low limit of game range.";
     public static final String INPUT_HIGH_LIMIT = "Please, enter high limit of game range.";
     public static final String INVITING = "Try to guess a secret number. Print your number in range: ";
+    public static final String MAX_LIMIT_WARNING = "High limit must be greater than low limit, which is ";
     public static final String LEFT_BRACKET = "[";
     public static final String RIGHT_BRACKET = "]";
     public static final String DIVIDER = " ";
