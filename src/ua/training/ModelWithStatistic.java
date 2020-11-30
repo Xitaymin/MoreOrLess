@@ -16,7 +16,7 @@ public class ModelWithStatistic extends Model {
     }
 
     @Override
-    int compareUserInputWithGuessedNumber(int userInput) {
+    protected int compareUserInputWithGuessedNumber(int userInput) {
         stepCounter++;
         history.add(userInput);
         return super.compareUserInputWithGuessedNumber(userInput);

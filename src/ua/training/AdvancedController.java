@@ -8,7 +8,7 @@ public class AdvancedController extends Controller {
     }
 
     @Override
-    void processUserInput() {
+    protected void processUserInput() {
         Scanner scanner = new Scanner(System.in);
         int userInput;
         view.showMessage(View.INPUT_LOW_LIMIT);

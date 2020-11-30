@@ -35,7 +35,7 @@ public class Model {
         return guessedNumber;
     }
 
-    int compareUserInputWithGuessedNumber(int userInput) {
+    protected int compareUserInputWithGuessedNumber(int userInput) {
         if(userInput<guessedNumber){
             changeRange(userInput, maxLimit);
             return Model.LESS;
@@ -47,7 +47,7 @@ public class Model {
         else { return Model.EQUAL;}
     }
 
-    void changeRange(int newMinLimit, int newMaxLimit) {
+    protected void changeRange(int newMinLimit, int newMaxLimit) {
         setMinLimit(newMinLimit);
         setMaxLimit(newMaxLimit);
     }

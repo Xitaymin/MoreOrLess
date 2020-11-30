@@ -11,7 +11,7 @@ public class Controller {
         this.view = view;
     }
 
-     void processUserInput(){
+     protected void processUserInput(){
         Scanner scanner = new Scanner(System.in);
         boolean shouldInputContinue = true;
         int userInput;
@@ -20,7 +20,7 @@ public class Controller {
         launchGame(scanner);
      }
 
-     void launchGame(Scanner scanner) {
+     protected void launchGame(Scanner scanner) {
         int userInput;
         boolean shouldInputContinue = true;
         while (shouldInputContinue) {
@@ -30,7 +30,7 @@ public class Controller {
         }
     }
 
-    void checkIfIntValue(Scanner scanner) {
+    protected void checkIfIntValue(Scanner scanner) {
         while (!scanner.hasNextInt()){
             view.showMessage(View.WRONG_INPUT_TYPE);
             scanner.next();
@@ -64,9 +64,7 @@ public class Controller {
         view.showMessageWithRange(compairingResult, model.getMinLimit(), model.getMaxLimit());
         view.showHistoryOfAttempts(model.getHistory());
     }
-
-    // todo let user to change range
-    //todo make view methods more independent from business logic
+    //todo replace inheritance on interface implementation
     boolean checkIfUserInputValid (int userInput) {
         return (userInput<model.getMaxLimit())&&(userInput>model.getMinLimit());
     }
