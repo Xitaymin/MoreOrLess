@@ -1,4 +1,4 @@
-package ua.training;
+package ua.training.model;
 
 public class Model {
     public static final int LESS = -1;
@@ -35,7 +35,7 @@ public class Model {
         return guessedNumber;
     }
 
-    protected int compareUserInputWithGuessedNumber(int userInput) {
+    public int compareUserInputWithGuessedNumber(int userInput) {
         if(userInput<guessedNumber){
             changeRange(userInput, maxLimit);
             return Model.LESS;

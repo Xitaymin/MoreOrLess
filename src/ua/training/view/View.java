@@ -1,4 +1,4 @@
-package ua.training;
+package ua.training.view;
 
 import java.util.List;
 
@@ -17,15 +17,15 @@ public class View {
     public static final String RIGHT_BRACKET = "]";
     public static final String DIVIDER = " ";
     public static final String COMMA = ",";
-     void showMessage(String message) {
+     public void showMessage(String message) {
         System.out.println(message);
     }
 
-    void showMessageWithRange(String message, int minLimit, int maxLimit) {
+    public void showMessageWithRange(String message, int minLimit, int maxLimit) {
         System.out.println(message + " (" + minLimit + ", " + maxLimit + ")");
     }
 
-    void showHistoryOfAttempts(List<Integer> steps) {
+    public void showHistoryOfAttempts(List<Integer> steps) {
          StringBuilder sb = new StringBuilder();
         System.out.print("Before you entered: ");
         for (Integer step:steps) {
@@ -35,7 +35,7 @@ public class View {
         System.out.println(sb.toString());
     }
 
-    void concatStrings(String ... strings) {
+    public void concatStrings(String ... strings) {
         StringBuilder sb = new StringBuilder();
         for (String s:strings) {
             sb.append(s);
@@ -43,7 +43,7 @@ public class View {
         System.out.println(sb);
     }
 
-    void showStepCounter(int counter){
+    public void showStepCounter(int counter){
         System.out.println("You made " + counter + " attempts.");
     }
 }

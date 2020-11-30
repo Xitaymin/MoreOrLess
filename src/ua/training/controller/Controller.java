@@ -1,4 +1,8 @@
-package ua.training;
+package ua.training.controller;
+
+import ua.training.model.Model;
+import ua.training.model.ModelWithStatistic;
+import ua.training.view.View;
 
 import java.util.Scanner;
 
@@ -11,7 +15,7 @@ public class Controller {
         this.view = view;
     }
 
-     protected void processUserInput(){
+     public void processUserInput(){
         Scanner scanner = new Scanner(System.in);
         boolean shouldInputContinue = true;
         int userInput;

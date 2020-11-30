@@ -1,5 +1,10 @@
 package ua.training;
 
+import ua.training.controller.AdvancedController;
+import ua.training.controller.Controller;
+import ua.training.model.ModelWithStatistic;
+import ua.training.view.View;
+
 public class Main {
 
     public static void main(String[] args) {

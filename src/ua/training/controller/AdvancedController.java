@@ -1,4 +1,7 @@
-package ua.training;
+package ua.training.controller;
+
+import ua.training.model.ModelWithStatistic;
+import ua.training.view.View;
 
 import java.util.Scanner;
 
@@ -8,7 +11,7 @@ public class AdvancedController extends Controller {
     }
 
     @Override
-    protected void processUserInput() {
+    public void processUserInput() {
         Scanner scanner = new Scanner(System.in);
         int userInput;
         view.showMessage(View.INPUT_LOW_LIMIT);

@@ -1,4 +1,4 @@
-package ua.training;
+package ua.training.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +16,7 @@ public class ModelWithStatistic extends Model {
     }
 
     @Override
-    protected int compareUserInputWithGuessedNumber(int userInput) {
+    public int compareUserInputWithGuessedNumber(int userInput) {
         stepCounter++;
         history.add(userInput);
         return super.compareUserInputWithGuessedNumber(userInput);
