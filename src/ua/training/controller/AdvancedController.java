@@ -5,7 +5,7 @@ import ua.training.view.View;
 
 import java.util.Scanner;
 
-public class AdvancedController extends DefaultController {
+public class AdvancedController extends OldController {
     public AdvancedController(ModelWithStatistic model, View view) {
         super(model, view);
     }

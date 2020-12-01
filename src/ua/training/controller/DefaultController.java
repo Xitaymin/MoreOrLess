@@ -1,75 +1,39 @@
 package ua.training.controller;
 
-import ua.training.model.Model;
-import ua.training.model.ModelWithStatistic;
-import ua.training.view.View;
+import ua.training.model.Game;
 
-import java.util.Scanner;
+public class DefaultController implements Controller{
+    private UserInputReader reader;
+    private UserInputValidator validator;
+    private UserViewCreator viewCreator;
+    private GameBuilder gameBuilder;
+    private Game game;
 
-public class DefaultController {
-     ModelWithStatistic model;
-     View view;
+    @Override
+    public void initialGame() {
+        Integer userInput;
+        viewCreator.welcomeUser();
+        viewCreator.offerUserSetMinLimit();
+        userInput = reader.getUserIntValue();
+        gameBuilder.setMinLimit(userInput);
+        viewCreator.offerUserSetMaxLimit();
+        userInput = reader.getUserIntValue();
 
-    public DefaultController(ModelWithStatistic model, View view) {
-        this.model = model;
-        this.view = view;
-    }
-
-     public void processUserInput(){
-        Scanner scanner = new Scanner(System.in);
-        boolean shouldInputContinue = true;
-        int userInput;
-        model.setGuessedNumber();
-        view.showMessage(View.GREETING);
-        launchGame(scanner);
-     }
-
-     protected void launchGame(Scanner scanner) {
-        int userInput;
-        boolean shouldInputContinue = true;
-        while (shouldInputContinue) {
-            checkIfIntValue(scanner);
-            userInput = scanner.nextInt();
-            shouldInputContinue = processUserIntValue(scanner, shouldInputContinue, userInput);
+        while (!validator.checkUserMaxLimit(gameBuilder,userInput)){
+            viewCreator.showMaxLimitRestriction();
+            userInput = reader.getUserIntValue();
         }
+
+        gameBuilder.setMaxLimit(userInput);
+        gameBuilder.setSecretNumber();
+        game = gameBuilder.makeGame();
     }
 
-    protected void checkIfIntValue(Scanner scanner) {
-        while (!scanner.hasNextInt()){
-            view.showMessage(View.WRONG_INPUT_TYPE);
-            scanner.next();
-        }
-    }
-
-    private boolean processUserIntValue(Scanner scanner, boolean shouldInputContinue, int userInput) {
-        if (checkIfUserInputValid(userInput)) {
-            int compairingResult = model.compareUserInputWithGuessedNumber(userInput);
-            if (compairingResult == Model.EQUAL) {
-                endGame(scanner, userInput);
-                shouldInputContinue = false;
-            } else if (compairingResult == Model.LESS) {
-                askUserToContinue(View.LESS_NUMBER);
-            } else {
-                askUserToContinue(View.GREATER_NUMBER);
-            }
-        } else {
-            askUserToContinue(View.INVALID_INPUT);
-        }
-        return shouldInputContinue;
-    }
-
-    private void endGame(Scanner scanner, int userInput) {
-        view.showMessage(View.CONGRATULATION + userInput);
-        view.showStepCounter(model.getStepCounter());
-        scanner.close();
-    }
-
-    private void askUserToContinue(String compairingResult) {
-        view.showMessageWithRange(compairingResult, model.getMinLimit(), model.getMaxLimit());
-        view.showHistoryOfAttempts(model.getHistory());
-    }
-    //todo replace inheritance on interface implementation
-    boolean checkIfUserInputValid (int userInput) {
-        return (userInput<model.getMaxLimit())&&(userInput>model.getMinLimit());
+    @Override
+    public void playGame() {
+        Integer userInput;
+        viewCreator.inviteUserToGame();
+        userInputreader.getUserIntValue();
+        validator.checkIfUserValueInRange();
     }
 }

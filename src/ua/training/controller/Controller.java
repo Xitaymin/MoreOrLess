@@ -1,5 +1,6 @@
 package ua.training.controller;
 
 public interface Controller {
-    void launchGame();
+    void initialGame();
+    void playGame();
 }
