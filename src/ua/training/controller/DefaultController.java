@@ -33,7 +33,7 @@ public class DefaultController implements Controller{
     public void playGame() {
         Integer userInput;
         viewCreator.inviteUserToGame();
-        userInputreader.getUserIntValue();
-        validator.checkIfUserValueInRange();
+        userInput = reader.getUserIntValue();
+        validator.checkIfUserValueInRange(userInput, game);
     }
 }
