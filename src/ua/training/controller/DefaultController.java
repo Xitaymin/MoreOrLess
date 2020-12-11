@@ -33,10 +33,23 @@ public class DefaultController implements Controller{
     public void playGame() {
         Integer userInput;
         viewCreator.inviteUserToGame();
-        do{userInput = reader.getUserIntValue();}
-        while (!validator.checkIfUserValueInRange(userInput,game));
 
+
+
+        while(game.isContinue){
+            makeStep();}
         }
 
+
+
+    private void makeStep() {
+        int userInput;
+        userInput = reader.getUserIntValue();
+        while (!validator.checkIfUserValueInRange(userInput,game));
+        userInput = reader.getUserIntValue();
+        viewCreator.showOutOfRangeWarning();
+
+        game.compareUserValueWithSecretNumber();
     }
+
 }
