@@ -21,4 +21,6 @@ public class ModelWithStatistic extends Model {
         history.add(userInput);
         return super.compareUserInputWithGuessedNumber(userInput);
     }
+
+    //comment for test
 }
