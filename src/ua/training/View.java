@@ -47,3 +47,6 @@ public class View {
         System.out.println("You made " + counter + " attempts.");
     }
 }
+
+//comment for commit test
+
