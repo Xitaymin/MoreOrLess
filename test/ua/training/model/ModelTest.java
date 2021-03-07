@@ -13,9 +13,9 @@ public class ModelTest {
     @Test
     public void testSettingSecretValue(){
         Model model = new Model();
-        model.setMinLimit(0);
+        model.setMinLimit(1);
         model.setMaxLimit(100);
-        boolean [] arr = new boolean[101];
+        boolean [] arr = new boolean[(model.getMaxLimit()-model.getMinLimit()+1)];
         for(int i = 0;i<1000000;i++){
             model.setGuessedNumber();
             arr[model.getGuessedNumber()] = true;
