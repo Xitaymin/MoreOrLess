@@ -1,5 +1,8 @@
 package ua.training.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Model {
     public static final int LESS = -1;
     public static final int MORE = 1;
@@ -7,8 +10,18 @@ public class Model {
     private int minLimit = 1;
     private int maxLimit = 100;
     private int guessedNumber;
+    private int stepCounter = 0;
+    private List<Integer> history = new ArrayList<>();
 
     public Model() {
+    }
+
+    public int getStepCounter() {
+        return stepCounter;
+    }
+
+    public List<Integer> getHistory() {
+        return history;
     }
 
     public int getMinLimit() {
@@ -28,7 +41,7 @@ public class Model {
     }
 
     public void setGuessedNumber() {
-        guessedNumber = (int)(Math.random()*(maxLimit - minLimit) + minLimit);
+        guessedNumber = minLimit + (int)(Math.random()*(maxLimit - minLimit));
     }
 
     public int getGuessedNumber() {
@@ -36,6 +49,9 @@ public class Model {
     }
 
     public int compareUserInputWithGuessedNumber(int userInput) {
+
+        stepCounter++;
+        history.add(userInput);
         if(userInput<guessedNumber){
             changeRange(userInput, maxLimit);
             return Model.LESS;
@@ -47,7 +63,7 @@ public class Model {
         else { return Model.EQUAL;}
     }
 
-    protected void changeRange(int newMinLimit, int newMaxLimit) {
+    public void changeRange(int newMinLimit, int newMaxLimit) {
         setMinLimit(newMinLimit);
         setMaxLimit(newMaxLimit);
     }
